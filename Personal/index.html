@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Personal Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <style>
+    .shape-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      perspective: 1000px; /* Add perspective for 3D effect */
+    }
+
+    .diamond-shape {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      gap: 30px; /* Adjusted gap */
+      position: absolute;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 50%;
+    }
+
+    .cube {
+      width: 150px; /* Increased size */
+      height: 150px; /* Increased size */
+      position: relative;
+      transform-style: preserve-3d;
+      animation: rotateCube 4s linear infinite;
+    }
+
+    .cube div {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border: 1px solid #000;
+    }
+
+    .cube .front { transform: translateZ(75px); background-color: rgba(255, 0, 0, 0.7); }
+    .cube .back { transform: rotateY(180deg) translateZ(75px); background-color: rgba(0, 255, 0, 0.7); }
+    .cube .left { transform: rotateY(-90deg) translateZ(75px); background-color: rgba(0, 0, 255, 0.7); }
+    .cube .right { transform: rotateY(90deg) translateZ(75px); background-color: rgba(255, 255, 0, 0.7); }
+    .cube .top { transform: rotateX(90deg) translateZ(75px); background-color: rgba(255, 0, 255, 0.7); }
+    .cube .bottom { transform: rotateX(-90deg) translateZ(75px); background-color: rgba(0, 255, 255, 0.7); }
+
+    @keyframes rotateCube {
+      0% {
+        transform: rotateX(0deg) rotateY(0deg);
+      }
+      100% {
+        transform: rotateX(360deg) rotateY(360deg);
+      }
+    }
+
+    .diamond-shape > :nth-child(1) { grid-area: 1 / 2; }
+    .diamond-shape > :nth-child(2) { grid-area: 2 / 1; }
+    .diamond-shape > :nth-child(3) { grid-area: 2 / 3; }
+    .diamond-shape > :nth-child(4) { grid-area: 3 / 2; }
+
+    /* Media query to hide the shapes on small screens */
+    @media (max-width: 1200px) {
+      .shape-container {
+        display: none;
+      }
+    }
+
+    @media (max-height: 100px) {
+      .shape-container {
+        display: none;
+      }
+    }
+
+    /* Additional media query to adjust the cubes for mobile */
+    @media (max-width: 768px) {
+      .shape-container-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50vh;
+        perspective: 1000px; /* Add perspective for 3D effect */
+      }
+
+      .mobile-diamond-shape {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 10px; /* Adjusted gap for smaller cubes */
+        position: relative;
+        transform: translate(0, 0);
+      }
+
+      .mobile-cube {
+        width: 100px; /* Bigger size for mobile */
+        height: 100px;
+        position: relative;
+        transform-style: preserve-3d;
+        animation: rotateCube 4s linear infinite;
+      }
+
+      .mobile-cube div {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border: 1px solid #000;
+      }
+
+      .mobile-cube .front { transform: translateZ(50px); background-color: rgba(255, 0, 0, 0.7); }
+      .mobile-cube .back { transform: rotateY(180deg) translateZ(50px); background-color: rgba(0, 255, 0, 0.7); }
+      .mobile-cube .left { transform: rotateY(-90deg) translateZ(50px); background-color: rgba(0, 0, 255, 0.7); }
+      .mobile-cube .right { transform: rotateY(90deg) translateZ(50px); background-color: rgba(255, 255, 0, 0.7); }
+      .mobile-cube .top { transform: rotateX(90deg) translateZ(50px); background-color: rgba(255, 0, 255, 0.7); }
+      .mobile-cube .bottom { transform: rotateX(-90deg) translateZ(50px); background-color: rgba(0, 255, 255, 0.7); }
+
+      .mobile-diamond-shape > :nth-child(1) { grid-area: 1 / 2; }
+      .mobile-diamond-shape > :nth-child(2) { grid-area: 2 / 1; }
+      .mobile-diamond-shape > :nth-child(3) { grid-area: 2 / 3; }
+      .mobile-diamond-shape > :nth-child(4) { grid-area: 3 / 2; }
+
+      .social-links {
+        margin-top: 20px; /* Adjust margin to move links higher */
+      }
+    }
+
+    .main-title {
+      min-width: 400px; /* Adjust the value to your desired minimum width */
+      display: inline-block; /* Ensures the min-width is respected */
+    }
+
+    .square-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 100%; /* This creates a square aspect ratio */
+    }
+
+    .square-container img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensures the image covers the area, maintaining its aspect ratio */
+    }
+
+    .about-me {
+      margin-bottom: 0; /* Ensure there's no extra margin at the bottom */
+      padding-bottom: 0; /* Ensure there's no extra padding at the bottom */
+    }
+
+    .about-me .content {
+      margin-bottom: 0; /* Ensure there's no extra margin at the bottom of the content */
+      padding-bottom: 0; /* Ensure there's no extra padding at the bottom of the content */
+    }
+
+    .about-me .row {
+      margin-bottom: 0; /* Ensure there's no extra margin at the bottom of the row */
+      padding-bottom: 0; /* Ensure there's no extra padding at the bottom of the row */
+    }
+
+    .about-me .col-lg-4,
+    .about-me .col-lg-8 {
+      margin-bottom: 0; /* Ensure there's no extra margin at the bottom of the columns */
+      padding-bottom: 0; /* Ensure there's no extra padding at the bottom of the columns */
+    }
+
+    .about-me ul {
+      margin-bottom: 0; /* Ensure there's no extra margin at the bottom of the list */
+      padding-bottom: 0; /* Ensure there's no extra padding at the bottom of the list */
+    }
+
+    .skills {
+      margin-top: 40px; /* Adjust the value to your desired negative margin */
+    }
+
+    #header {
+      padding: 40px 0; /* Increase padding to make header larger */
+      overflow: hidden; /* Prevent overflow */
+    }
+
+    #header .main-title {
+      font-size: 3em; /* Increase font size for the main title */
+    }
+
+    #header h2 {
+      font-size: 1.5em; /* Increase font size for the subtitle */
+    }
+
+    #header .navbar {
+      font-size: 1.2em; /* Increase font size for the navigation links */
+    }
+
+    /* Custom CSS class for blue links */
+    .link-blue {
+      color: blue;
+    }
+
+    /* Media query to center the header text and icons on mobile */
+    @media (max-width: 768px) {
+      .header-text-center {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .header-text-center .navbar {
+        display: flex;
+        justify-content: center;
+      }
+
+      .header-text-center .social-links {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px; /* Adjust margin to move links higher */
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 header-text-center">
+          <h1 class="main-title" style="padding-top: 8px; padding-bottom: 8px;"><a href="index.html">Maddox Barron</a></h1>
+          <h2>SWE Student @ at Vanderbilt University</h2>
+          <nav id="navbar" class="navbar">
+            <ul>
+              <li><a class="nav-link active" href="#header">Home</a></li>
+              <li><a class="nav-link" href="#about">About</a></li>
+              <li><a class="nav-link" href="#resume">Resume</a></li>
+              <li><a class="nav-link" href="#services">Articles</a></li>
+              <li><a class="nav-link" href="#portfolio">Projects</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav><!-- .navbar -->
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/maddox-barron/" class="twitter"><i class="bi bi-linkedin"></i></a>
+            <a href="https://github.com/maddoxrb" class="facebook"><i class="bi bi-github"></i></a>
+            <a href="mailto:maddox.barron31@gmail.com" class="instagram"><i class="bi bi-envelope-at-fill"></i></a>
+            <a href="tel:+7206269306" class="linkedin"><i class="bi bi-telephone-inbound-fill"></i></a>
+          </div>
+        </div>
+        <div class="col-md-6 shape-container" id="shape-container">
+          <div class="diamond-shape">
+            <div class="cube">
+              <div class="front"></div>
+              <div class="back"></div>
+              <div class="left"></div>
+              <div class="right"></div>
+              <div class="top"></div>
+              <div class="bottom"></div>
+            </div>
+            <div class="cube">
+              <div class="front"></div>
+              <div class="back"></div>
+              <div class="left"></div>
+              <div class="right"></div>
+              <div class="top"></div>
+              <div class="bottom"></div>
+            </div>
+            <div class="cube">
+              <div class="front"></div>
+              <div class="back"></div>
+              <div class="left"></div>
+              <div class="right"></div>
+              <div class="top"></div>
+              <div class="bottom"></div>
+            </div>
+            <div class="cube">
+              <div class="front"></div>
+              <div class="back"></div>
+              <div class="left"></div>
+              <div class="right"></div>
+              <div class="top"></div>
+              <div class="bottom"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 shape-container-mobile" id="shape-container-mobile">
+          <div class="mobile-diamond-shape">
+            <div class="mobile-cube">
+              <div class="front"></div>
+              <div class="back"></div>
+              <div class="left"></div>
+              <div class="right"></div>
+              <div class="top"></div>
+              <div class="bottom"></div>
+            </div>
+            <div class="mobile-cube">
+              <div class="front"></div>
+              <div class="back"></div>
+              <div class="left"></div>
+              <div class="right"></div>
+              <div class="top"></div>
+              <div class="bottom"></div>
+            </div>
+            <div class="mobile-cube">
+              <div class="front"></div>
+              <div class="back"></div>
+              <div class="left"></div>
+              <div class="right"></div>
+              <div class="top"></div>
+              <div class="bottom"></div>
+            </div>
+            <div class="mobile-cube">
+              <div class="front"></div>
+              <div class="back"></div>
+              <div class="left"></div>
+              <div class="right"></div>
+              <div class="top"></div>
+              <div class="bottom"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header><!-- End Header -->
+
+
+
+  <!-- ======= About Section ======= -->
+  <section id="about" class="about" style ="padding-top: 20px;">
+
+    <!-- ======= About Me ======= -->
+    <div class="about-me container">
+
+      <div class="section-title">
+        <h2>About</h2>
+        <p>Learn More About Me</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4" data-aos="fade-right">
+          <div class="square-container">
+            <img src="assets/img/me.jpg" class="img-fluid square-image" alt="">
+          </div>
+        </div>
+        
+        <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+          <h3 style = "padding-bottom: 15px;" >Graduate Student of Computer Science at Vanderbilt University</h3>
+          
+          <div class="row">
+            <div class="col-lg-6">
+              <ul>
+                <li><i class="bi bi-chevron-right"></i> <strong>Graduate:</strong> <span>M.Sc of Computer Science</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+720 626 9306</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/maddox-barron" target="_blank">Click Me!</a></li>
+
+              </ul>
+            </div>
+            <div class="col-lg-6">
+              <ul>
+                <li><i class="bi bi-chevron-right"></i> <strong>Undergrad:</strong> <span> B.Sc of Computer Science</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>maddox.barron31@gmail.com</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Charleston, SC</span></li>
+              </ul>
+            </div>
+          </div>
+          <p style="line-height: 2; font-size: 18px; ">
+            I'm a current student at Vanderbilt University set to graduate in May of 2026! Through Vanderbilt's accelerated master's program I am currently pursuing both an M.Sc and B.Sc in Computer Science alongside minors in Business and Data Science. I am particularly interested in the intersection of AI/ML and the product management lifecycle. Developments in LLM's and other AI models have the potential to significantly improve market analysis, product development, and continuous post-launch improvements.
+        </p>
+        
+        </div>
+      </div>
+
+    </div><!-- End About Me -->
+
+    <!-- ======= Counts ======= -->
+    <!-- <div class="counts container">
+
+      <div class="row">
+
+        <div class="col-lg-3 col-md-6">
+          <div class="count-box">
+            <i class="bi bi-emoji-smile"></i>
+            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Happy Clients</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
+          <div class="count-box">
+            <i class="bi bi-journal-richtext"></i>
+            <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Projects</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+          <div class="count-box">
+            <i class="bi bi-headset"></i>
+            <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Hours Of Support</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+          <div class="count-box">
+            <i class="bi bi-award"></i>
+            <span data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Awards</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>End Counts -->
+
+    <!-- ======= Skills  ======= -->
+    
+
+    <!-- ======= Interests ======= -->
+    <div class="interests container">
+
+      <div class="section-title">
+        <h2>Personal Interests</h2>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-3 col-md-4">
+          <div class="icon-box">
+            <i class="ri-store-line" style="color: #ffbb2c;"></i>
+            <h3>Product Management</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+          <div class="icon-box">
+            <i class="ri-bar-chart-box-line" style="color: #5578ff;"></i>
+            <h3>Data Analytics</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+          <div class="icon-box">
+            <i class="ri-gradienter-line" style="color: #e80368;"></i>
+            <h3>AI & Machine Learning</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
+          <div class="icon-box">
+            <i class="bi bi-briefcase" style="color: #e361ff;"></i>
+            <h3>Entrepreneurship</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4">
+          <div class="icon-box">
+            <i class="bi bi-cloud" style="color: #47aeff;"></i>
+            <h3>Cloud Computing</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4">
+          <div class="icon-box">
+            <i class="bi bi-recycle" style="color: #ffa76e;"></i>
+            <h3>Agile Methodology</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4">
+          <div class="icon-box">
+            <i class="bi bi-lightbulb" style="color: #11dbcf;"></i>
+            <h3>Product Innovation</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4">
+          <div class="icon-box">
+            <i class="bi bi-people" style="color: #4233ff;"></i>
+            <h3>Customer Analytics</h3>
+          </div>
+        </div>
+        <!-- <div class="col-lg-3 col-md-4 mt-4">
+          <div class="icon-box">
+            <i class="ri-anchor-line" style="color: #b2904f;"></i>
+            <h3>Dirada Pack</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4">
+          <div class="icon-box">
+            <i class="ri-disc-line" style="color: #b20969;"></i>
+            <h3>Moton Ideal</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4">
+          <div class="icon-box">
+            <i class="ri-base-station-line" style="color: #ff5828;"></i>
+            <h3>Verdo Park</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4">
+          <div class="icon-box">
+            <i class="ri-fingerprint-line" style="color: #29cc61;"></i>
+            <h3>Flavor Nivelanda</h3>
+          </div>
+        </div>
+      </div> -->
+
+    </div><!-- End Interests -->
+
+    <div class="skills container">
+
+      <div class="section-title" style="text-align: left;">
+        <h2>Technologies I Work With Most</h2>
+    </div>
+    
+
+      <div class="row skills-content">
+
+        <div class="col-lg-6">
+
+          <div class="progress">
+            <span class="skill">Python <i class="val">100%</i></span>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+
+          <div class="progress">
+            <span class="skill">Large Langauge Models <i class="val">90%</i></span>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+
+
+          <div class="progress">
+            <span class="skill">Amazon Web Services <i class="val">60%</i></span>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-lg-6">
+          <div class="progress">
+            <span class="skill">C++ <i class="val">100%</i></span>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+
+          <div class="progress">
+            <span class="skill">React <i class="val">70%</i></span>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+
+
+          <div class="progress">
+            <span class="skill"> Java<i class="val">55%</i></span>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div><!-- End Skills -->
+
+  
+
+  </section><!-- End About Section -->
+  
+
+  <!-- ======= Resume Section ======= -->
+<!-- ======= Resume Section ======= -->
+<section id="resume" class="resume" style ="padding-top: 20px;">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Resume</h2>
+      <p>Check My Resume</p>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6">
+
+        <h3 class="resume-title">Education</h3>
+        <div class="resume-item">
+          <h4>M.Sc in Computer Science</h4>
+          <h5>August 2022 - May 2026</h5>
+          <p><em>Vanderbilt University, Nashville, TN</em></p>
+          <p>GPA: 4.0/4.0</p>
+          <p>Honors: Dean’s List (2022-2024)</p>
+          <p>Relevant Coursework: Image Processing, Intelligient Systems & Robotics, Advanced Software Engineering, Project Management</p>
+        </div>
+        <div class="resume-item">
+          <h4>B.Sc in Computer Science</h4>
+          <h5>August 2022 - May 2026</h5>
+          <p><em>Vanderbilt University, Nashville, TN</em></p>
+          <p>GPA: 3.85/4.0</p>
+          <p>Minors in Data Science and Business</p>
+          <p>Project Director at Vanderbilt Emerging Technology Laboratory</p>
+          <p>Relevant Coursework: Program Design & Data Structures, Discrete Systems, Digital Systems, Organizational Behavior, Software Design</p>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <h3 class="resume-title">Professional Experience</h3>
+        <div class="resume-item">
+          <h4>Product Manager</h4>
+          <h5>June 2023 – Present</h5>
+          <p><em>VRFY Technology, Washington, DC</em></p>
+          <p>
+          <ul>
+            <li>Spearheaded the development of VRFY Tag technology and the concurrent creation of a web-based marketplace, employing agile methodologies</li>
+            <li>Led a cross-functional team of six, orchestrating the product’s journey from concept through beta launch by establishing a clear product roadmap</li>
+            <li>Implemented sprint planning and drove progress through weekly Scrum meetings</li>
+            <li>Managed the beta launch phase across 14 stores in Canada and the US, leveraging analytics and user feedback mechanisms to gather actionable insights for continuous improvement</li>
+          </ul>
+          </p>
+        </div>
+        <div class="resume-item">
+          <h4>Software Development Intern</h4>
+          <h5>Aug 2023 – Present</h5>
+          <p><em>RateQuote, Nashville, TN</em></p>
+          <p>
+          <ul>
+            <li>Developed a dynamic application using Next.js and React.js, enabling AI-driven article generation to enhance SEO, leading to a 50% increase in site traffic after the first month</li>
+            <li>Designed and iterated upon 13 different website pages, utilizing React and Figma to improve website performance and user experience</li>
+          </ul>
+          </p>
+        </div>
+        <div class="resume-item">
+          <h4>Software Development Intern</h4>
+          <h5>May 2021 – August 2021</h5>
+          <p><em>Primal Logic and Data Corporation, Charleston, SC</em></p>
+          <p>
+          <ul>
+            <li>Leveraged Amazon Web Services (AWS) to contribute to the development of cloud infrastructure for website launches</li>
+            <li>Received valuable mentorship in project management for both backend and frontend website development, gaining firsthand experience in the product development lifecycle</li>
+          </ul>
+          </p>
+        </div>
+       
+       
+         
+
+  </section><!-- End Resume Section -->
+
+  <!-- ======= Services Section ======= -->
+  <section id="services" class="services" style ="padding-top: 20px;">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Blog</h2>
+        <p>My Articles</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="icon-box">
+            <div class="icon"><i class="bx bxl-dribbble"></i></div>
+            <h4><a href="">Lorem Ipsum</a></h4>
+            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-file"></i></div>
+            <h4><a href="">Sed ut perspiciatis</a></h4>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-tachometer"></i></div>
+            <h4><a href="">Magni Dolores</a></h4>
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-world"></i></div>
+            <h4><a href="">Nemo Enim</a></h4>
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-slideshow"></i></div>
+            <h4><a href="">Dele cardo</a></h4>
+            <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-arch"></i></div>
+            <h4><a href="">Divera don</a></h4>
+            <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- End Services Section -->
+
+  <!-- ======= Portfolio Section ======= -->
+  <section id="portfolio" class="portfolio" style ="padding-top: 20px;">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Projects</h2>
+        <p>My Works</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12 d-flex justify-content-center">
+          <ul id="portfolio-flters">
+            <li data-filter="*" class="filter-active">All</li>
+            <li data-filter=".filter-app">App</li>
+            <li data-filter=".filter-card">Card</li>
+            <li data-filter=".filter-web">Web</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row portfolio-container">
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="portfolio-wrap">
+            <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>App 1</h4>
+              <p>App</p>
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <div class="portfolio-wrap">
+            <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>VRFY</h4>
+              <p></p>
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="portfolio-wrap">
+            <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>App 2</h4>
+              <p>App</p>
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+          <div class="portfolio-wrap">
+            <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Card 2</h4>
+              <p>Card</p>
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <div class="portfolio-wrap">
+            <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Web 2</h4>
+              <p>Web</p>
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="portfolio-wrap">
+            <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>App 3</h4>
+              <p>App</p>
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+          <div class="portfolio-wrap">
+            <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Card 1</h4>
+              <p>Card</p>
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+          <div class="portfolio-wrap">
+            <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Card 3</h4>
+              <p>Card</p>
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <div class="portfolio-wrap">
+            <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Web 3</h4>
+              <p>Web</p>
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>End Portfolio Section -->
+
+  
+
+
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const shapeContainer = document.getElementById("shape-container");
+      const shapeContainerMobile = document.getElementById("shape-container-mobile");
+      const navLinks = document.querySelectorAll("#navbar .nav-link");
+  
+      navLinks.forEach(link => {
+        link.addEventListener("click", function() {
+          if (this.getAttribute("href") === "#header") {
+            if (window.innerWidth > 1200) {
+              shapeContainer.style.display = "flex";
+              shapeContainerMobile.style.display = "none";
+            } else {
+              shapeContainer.style.display = "none";
+              shapeContainerMobile.style.display = "flex";
+            }
+          } else {
+            shapeContainer.style.display = "none";
+            shapeContainerMobile.style.display = "none";
+          }
+        });
+      });
+    });
+  </script>
+  
+  
+
+</body>
+
+</html>
